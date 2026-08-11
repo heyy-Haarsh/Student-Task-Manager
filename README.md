@@ -1,4 +1,4 @@
-# Shreyasss Sonawanee Commit mt mar
+# Student Task Manager
 
 A base Flask + SQLite skeleton demonstrating a full Git branching workflow
 (see `BRANCHING_STRATEGY.md`).
