@@ -1,41 +1,25 @@
-"""
-Student Task Management System
-Base application entry point.
+from flask import Flask, render_template, request, redirect, url_for
 
-This is the minimal skeleton that lives on `main`. Feature branches
-(user-authentication, task-crud, task-dashboard-ui, notifications-reminders)
-build on top of this.
-"""
+app = Flask(__name__)
+tasks = ["Complete OS Assignment", "Submit IT Lab Manual"]
 
-from flask import Flask, render_template
-from config import Config
-from models import db
+@app.route('/')
+def index():
+    return render_template('index.html', tasks=tasks)
 
+@app.route('/add', methods=['POST'])
+def add_task():
+    task = request.form.get('task')
+    if task:
+        tasks.append(task)
+    return redirect(url_for('index'))
 
-def create_app(config_class=Config):
-    app = Flask(__name__)
-    app.config.from_object(config_class)
+# NEW FEATURE: Delete Task
+@app.route('/delete/<int:task_id>', methods=['POST'])
+def delete_task(task_id):
+    if 0 <= task_id < len(tasks):
+        tasks.pop(task_id)
+    return redirect(url_for('index'))
 
-    db.init_app(app)
-
-    with app.app_context():
-        db.create_all()
-
-    register_routes(app)
-    return app
-
-
-def register_routes(app):
-    @app.route("/")
-    def index():
-        return render_template("index.html", title="Student Task Manager")
-
-    @app.route("/health")
-    def health():
-        return {"status": "ok"}
-
-
-app = create_app()
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run(debug=True)

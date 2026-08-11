@@ -1,6 +1,28 @@
-{% extends "base.html" %}
-
-{% block content %}
-    <p>Welcome! This is the base skeleton on <code>main</code>.</p>
-    <p>Features (auth, task CRUD, dashboard, notifications) are built on separate branches.</p>
-{% endblock %}
+<!doctype html>
+<html>
+  <head>
+    <title>Student Task Manager</title>
+  </head>
+  <body>
+    <h2>Student Task Manager</h2>
+    <form action="/add" method="POST">
+      <input type="text" name="task" placeholder="Enter task..." required />
+      <button type="submit">Add Task</button>
+    </form>
+    <h3>Tasks:</h3>
+    <ul>
+      {% for task in tasks %}
+      <li>
+        {{ task }}
+        <form
+          action="/delete/{{ loop.index0 }}"
+          method="POST"
+          style="display: inline"
+        >
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
