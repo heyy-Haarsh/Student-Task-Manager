@@ -1,39 +1,737 @@
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
+/* ==============================
+   RESET
+================================= */
+
+* {
     margin: 0;
-    padding: 40px;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.container {
-    max-width: 600px;
-    margin: auto;
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
+html {
+    scroll-behavior: smooth;
 }
 
-h1 {
+body {
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 20% 10%,
+            rgba(99, 102, 241, 0.16),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(139, 92, 246, 0.12),
+            transparent 30%
+        ),
+        #08090d;
+
+    color: #f5f5f7;
+
+    overflow-x: hidden;
+}
+
+
+/* ==============================
+   BACKGROUND
+================================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.grid {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        );
+
+    background-size: 60px 60px;
+
+    mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 90%
+    );
+}
+
+.orb {
+    position: absolute;
+
+    width: 350px;
+    height: 350px;
+
+    border-radius: 50%;
+
+    filter: blur(100px);
+
+    opacity: 0.25;
+
+    animation: float 12s ease-in-out infinite;
+}
+
+.orb-1 {
+    background: #6366f1;
+    top: -150px;
+    left: -100px;
+}
+
+.orb-2 {
+    background: #8b5cf6;
+    bottom: -150px;
+    right: -100px;
+    animation-delay: -6s;
+}
+
+@keyframes float {
+
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(40px, 30px);
+    }
+}
+
+
+/* ==============================
+   APP
+================================= */
+
+.app {
+    position: relative;
+    z-index: 1;
+
+    width: min(920px, calc(100% - 32px));
+
+    margin: 0 auto;
+
+    padding: 45px 0 30px;
+}
+
+
+/* ==============================
+   HEADER
+================================= */
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 80px;
+
+    animation: fadeDown 0.7s ease both;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.logo {
+    width: 44px;
+    height: 44px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 13px;
+
+    background: linear-gradient(
+        135deg,
+        #6366f1,
+        #8b5cf6
+    );
+
+    font-size: 22px;
+    font-weight: 800;
+
+    box-shadow:
+        0 10px 30px rgba(99, 102, 241, 0.3);
+
+    animation: logoPulse 3s ease-in-out infinite;
+}
+
+@keyframes logoPulse {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+.brand h1 {
+    font-size: 17px;
+    letter-spacing: -0.3px;
+}
+
+.brand p {
+    margin-top: 2px;
+
+    color: #777b88;
+
+    font-size: 12px;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 9px 14px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 50px;
+
+    background: rgba(255,255,255,0.035);
+
+    color: #9da1ad;
+
+    font-size: 12px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #4ade80;
+
+    box-shadow:
+        0 0 10px rgba(74,222,128,0.8);
+
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.35;
+    }
+}
+
+
+/* ==============================
+   HERO
+================================= */
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    gap: 30px;
+
+    margin-bottom: 45px;
+
+    animation: fadeUp 0.7s 0.1s ease both;
+}
+
+.eyebrow {
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color: #777b88;
+
+    font-weight: 700;
+}
+
+.hero h2 {
+    margin-top: 12px;
+
+    font-size: clamp(38px, 6vw, 62px);
+
+    line-height: 1.02;
+
+    letter-spacing: -3px;
+
+    font-weight: 750;
+}
+
+.hero h2 span {
+    background: linear-gradient(
+        90deg,
+        #818cf8,
+        #c084fc
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+.hero p {
+    max-width: 520px;
+
+    margin-top: 18px;
+
+    color: #858995;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+.date-card {
+    min-width: 125px;
+
+    padding: 18px;
+
+    border-radius: 18px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    background: rgba(255,255,255,0.035);
+
+    backdrop-filter: blur(15px);
+
     text-align: center;
 }
 
-.input-area {
+.date-card span {
+    display: block;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color: #717581;
+}
+
+.date-card strong {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 16px;
+}
+
+
+/* ==============================
+   TASK INPUT
+================================= */
+
+.task-box {
+    padding: 7px;
+
+    border-radius: 18px;
+
+    background: rgba(255,255,255,0.045);
+
+    border: 1px solid rgba(255,255,255,0.09);
+
+    backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,0.25);
+
+    animation: fadeUp 0.7s 0.2s ease both;
+}
+
+.input-wrapper {
     display: flex;
+    align-items: center;
+
+    min-height: 65px;
+
+    padding: 0 8px 0 20px;
+
+    border-radius: 13px;
+
+    background: rgba(10,11,16,0.8);
+}
+
+.input-icon {
+    margin-right: 13px;
+
+    font-size: 25px;
+
+    color: #777bff;
+}
+
+.input-wrapper input {
+    flex: 1;
+
+    min-width: 0;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 14px;
+}
+
+.input-wrapper input::placeholder {
+    color: #5f626d;
+}
+
+.add-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 13px 18px;
+
+    border: none;
+    border-radius: 11px;
+
+    background: linear-gradient(
+        135deg,
+        #6366f1,
+        #7c3aed
+    );
+
+    color: white;
+
+    font-size: 13px;
+
+    font-weight: 650;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.add-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(99,102,241,0.3);
+}
+
+.add-btn:active {
+    transform: scale(0.96);
+}
+
+.arrow {
+    font-size: 18px;
+
+    transition: transform 0.25s ease;
+}
+
+.add-btn:hover .arrow {
+    transform: translateX(4px);
+}
+
+
+/* ==============================
+   TASK SECTION
+================================= */
+
+.tasks-section {
+    margin-top: 55px;
+
+    animation: fadeUp 0.7s 0.3s ease both;
+}
+
+.section-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.section-header h3 {
+    font-size: 18px;
+
+    letter-spacing: -0.5px;
+}
+
+.section-header p {
+    margin-top: 5px;
+
+    color: #696d78;
+
+    font-size: 12px;
+}
+
+.task-count {
+    padding: 8px 12px;
+
+    border-radius: 50px;
+
+    background: rgba(255,255,255,0.04);
+
+    border: 1px solid rgba(255,255,255,0.06);
+
+    color: #777b88;
+
+    font-size: 11px;
+}
+
+.task-count span {
+    color: #a5b4fc;
+
+    font-weight: 700;
+}
+
+
+/* ==============================
+   TASK LIST
+================================= */
+
+#taskList {
+    list-style: none;
+
+    display: flex;
+
+    flex-direction: column;
+
     gap: 10px;
 }
 
-input {
-    flex: 1;
-    padding: 10px;
+
+/* ==============================
+   TASK ITEMS
+================================= */
+
+#taskList li {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 18px 20px;
+
+    border: 1px solid rgba(255,255,255,0.065);
+
+    border-radius: 15px;
+
+    background: rgba(255,255,255,0.035);
+
+    color: #d9dae0;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+
+    animation: taskAppear 0.4s ease both;
 }
 
-button {
-    padding: 10px 15px;
-    cursor: pointer;
+#taskList li:hover {
+    transform: translateX(5px);
+
+    background: rgba(255,255,255,0.055);
+
+    border-color: rgba(129,140,248,0.25);
 }
 
-li {
-    margin-top: 15px;
-    padding: 10px;
-    background: #eee;
+@keyframes taskAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ==============================
+   EMPTY STATE
+================================= */
+
+.empty-state {
+    padding: 65px 20px;
+
+    text-align: center;
+
+    border-radius: 18px;
+
+    border: 1px dashed rgba(255,255,255,0.09);
+
+    background: rgba(255,255,255,0.018);
+
+    color: #70737e;
+}
+
+.empty-icon {
+    width: 55px;
+    height: 55px;
+
+    margin: 0 auto 17px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: rgba(99,102,241,0.1);
+
+    border: 1px solid rgba(129,140,248,0.18);
+
+    color: #818cf8;
+
+    font-size: 22px;
+}
+
+.empty-state h3 {
+    color: #a9abb4;
+
+    font-size: 15px;
+}
+
+.empty-state p {
+    margin-top: 7px;
+
+    font-size: 12px;
+}
+
+
+/* ==============================
+   FOOTER
+================================= */
+
+footer {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-top: 70px;
+
+    color: #444751;
+
+    font-size: 11px;
+}
+
+
+/* ==============================
+   ANIMATIONS
+================================= */
+
+@keyframes fadeDown {
+
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ==============================
+   RESPONSIVE
+================================= */
+
+@media (max-width: 650px) {
+
+    .app {
+        width: min(100% - 22px, 920px);
+
+        padding-top: 25px;
+    }
+
+    .header {
+        margin-bottom: 55px;
+    }
+
+    .status {
+        display: none;
+    }
+
+    .hero {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .hero h2 {
+        font-size: 42px;
+
+        letter-spacing: -2px;
+    }
+
+    .date-card {
+        align-self: flex-start;
+    }
+
+    .input-wrapper {
+        padding-left: 14px;
+    }
+
+    .input-icon {
+        display: none;
+    }
+
+    .add-btn {
+        padding: 12px 14px;
+    }
+
+    .add-btn span:first-child {
+        display: none;
+    }
+
+    .section-header {
+        align-items: flex-start;
+    }
 }

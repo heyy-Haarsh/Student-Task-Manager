@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
+    <title>Student Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Student Task Manager</h1>
+
+    <div class="input-area">
+        <input id="taskInput" type="text" placeholder="Enter a task...">
+        <button onclick="addTask()">Add Task</button>
+    </div>
+
+    <ul id="taskList"></ul>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
+=======
+
+    <title>Student Task Manager</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- HEADER -->
+        <header>
+            <div>
+                <h1>Student Task Manager</h1>
+                <p>Organize your work. Stay productive.</p>
+            </div>
+
+            <div class="date" id="date"></div>
+        </header>
+
+
+        <!-- ADD TASK -->
+        <section class="add-task">
+
+            <input
+                type="text"
+                id="taskInput"
+                placeholder="Enter a new task..."
+            >
+
+            <select id="priorityInput">
+                <option value="Low">Low</option>
+                <option value="Medium" selected>Medium</option>
+                <option value="High">High</option>
+            </select>
+
+            <button onclick="addTask()">
+                Add Task
+            </button>
+
+        </section>
+
+
+        <!-- TASK HEADER -->
+        <div class="tasks-header">
+
+            <div>
+                <h2>Your Tasks</h2>
+                <p id="taskSummary">0 pending</p>
+            </div>
+
+        </div>
+
+
+        <!-- TASK LIST -->
+        <div id="taskList"></div>
+
+
+        <!-- EMPTY STATE -->
+        <div id="emptyState" class="empty">
+            <div class="empty-circle">✓</div>
+
+            <h3>All caught up!</h3>
+
+            <p>You don't have any tasks right now.</p>
+        </div>
+
+
+        <footer>
+            Student Task Manager
+        </footer>
+
+    </div>
+
+
+    <script src="tasks.js"></script>
+    <script src="app.js"></script>
+
+</body>
+</html>
+>>>>>>> UI-Updations

@@ -1,0 +1,760 @@
+<<<<<<< HEAD
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 40px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.input-area {
+    display: flex;
+    gap: 10px;
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+}
+
+button {
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+li {
+    margin-top: 15px;
+    padding: 10px;
+    background: #eee;
+}
+=======
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    font-family:
+        Inter,
+        Arial,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #1e1b4b,
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at bottom right,
+            #172554,
+            transparent 35%
+        ),
+
+        #08090d;
+
+    color: #f5f5f5;
+
+    padding: 40px 20px;
+}
+
+
+/* ======================================
+   APP
+====================================== */
+
+.app {
+
+    width: 100%;
+
+    max-width: 900px;
+
+    margin: auto;
+
+}
+
+
+/* ======================================
+   HEADER
+====================================== */
+
+header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    margin-bottom: 45px;
+
+}
+
+
+header h1 {
+
+    font-size: 34px;
+
+    font-weight: 700;
+
+    letter-spacing: -1px;
+
+}
+
+
+header p {
+
+    margin-top: 8px;
+
+    color: #858894;
+
+    font-size: 14px;
+
+}
+
+
+.date {
+
+    color: #8b8f9d;
+
+    font-size: 13px;
+
+    padding: 10px 15px;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.05);
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+}
+
+
+/* ======================================
+   ADD TASK
+====================================== */
+
+.add-task {
+
+    display: flex;
+
+    gap: 10px;
+
+    padding: 8px;
+
+    background: rgba(255,255,255,0.05);
+
+    border: 1px solid rgba(255,255,255,0.09);
+
+    border-radius: 14px;
+
+    backdrop-filter: blur(20px);
+
+}
+
+
+.add-task input {
+
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 15px;
+
+    border: none;
+
+    outline: none;
+
+    border-radius: 9px;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 14px;
+
+}
+
+
+.add-task input::placeholder {
+
+    color: #686b77;
+
+}
+
+
+.add-task select {
+
+    padding: 0 12px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 9px;
+
+    background: #15161d;
+
+    color: #bbb;
+
+    outline: none;
+
+    cursor: pointer;
+
+}
+
+
+.add-task button {
+
+    padding: 0 22px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: linear-gradient(
+        135deg,
+        #6366f1,
+        #8b5cf6
+    );
+
+    color: white;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+
+}
+
+
+.add-task button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 25px
+        rgba(99,102,241,0.35);
+
+}
+
+
+/* ======================================
+   TASK HEADER
+====================================== */
+
+.tasks-header {
+
+    margin-top: 45px;
+
+    margin-bottom: 18px;
+
+}
+
+
+.tasks-header h2 {
+
+    font-size: 20px;
+
+}
+
+
+.tasks-header p {
+
+    margin-top: 5px;
+
+    color: #777b87;
+
+    font-size: 13px;
+
+}
+
+
+/* ======================================
+   TASK CARD
+====================================== */
+
+#taskList {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+}
+
+
+.task-card {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 17px 18px;
+
+    border-radius: 13px;
+
+    background: rgba(255,255,255,0.045);
+
+    border: 1px solid rgba(255,255,255,0.07);
+
+    transition:
+        transform 0.25s,
+        background 0.25s,
+        border 0.25s;
+
+    animation: appear 0.35s ease;
+
+}
+
+
+.task-card:hover {
+
+    transform: translateY(-2px);
+
+    background: rgba(255,255,255,0.065);
+
+    border-color:
+        rgba(129,140,248,0.25);
+
+}
+
+
+/* ======================================
+   TASK MAIN
+====================================== */
+
+.task-main {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    min-width: 0;
+
+}
+
+
+.task-info {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.task-title {
+
+    font-size: 14px;
+
+    color: #e5e7eb;
+
+}
+
+
+.task-card.completed .task-title {
+
+    text-decoration: line-through;
+
+    color: #6b6e78;
+
+}
+
+
+/* ======================================
+   CHECK
+====================================== */
+
+.check {
+
+    width: 24px;
+
+    height: 24px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    border: 1px solid #6366f1;
+
+    background: transparent;
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+
+}
+
+
+.check:hover {
+
+    transform: scale(1.1);
+
+}
+
+
+.check.checked {
+
+    background: #6366f1;
+
+}
+
+
+/* ======================================
+   PRIORITIES
+====================================== */
+
+.priority {
+
+    padding: 4px 9px;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+}
+
+
+.priority.high {
+
+    color: #ff8585;
+
+    background: rgba(239,68,68,0.13);
+
+}
+
+
+.priority.medium {
+
+    color: #f6c85f;
+
+    background: rgba(245,158,11,0.13);
+
+}
+
+
+.priority.low {
+
+    color: #6ee7b7;
+
+    background: rgba(16,185,129,0.13);
+
+}
+
+
+/* ======================================
+   ACTIONS
+====================================== */
+
+.actions {
+
+    display: flex;
+
+    gap: 7px;
+
+}
+
+
+.actions button {
+
+    padding: 8px 12px;
+
+    border-radius: 8px;
+
+    font-size: 11px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+}
+
+
+.edit {
+
+    border: 1px solid
+        rgba(129,140,248,0.2);
+
+    background:
+        rgba(99,102,241,0.1);
+
+    color: #a5b4fc;
+
+}
+
+
+.edit:hover {
+
+    background:
+        rgba(99,102,241,0.2);
+
+}
+
+
+.delete {
+
+    border: 1px solid
+        rgba(248,113,113,0.2);
+
+    background:
+        rgba(239,68,68,0.08);
+
+    color: #f87171;
+
+}
+
+
+.delete:hover {
+
+    background:
+        rgba(239,68,68,0.18);
+
+}
+
+
+/* ======================================
+   DELETE ANIMATION
+====================================== */
+
+.task-card.deleting {
+
+    animation: delete 0.45s ease forwards;
+
+}
+
+
+.task-card.deleting .task-title {
+
+    text-decoration: line-through;
+
+    color: #f87171;
+
+}
+
+
+@keyframes delete {
+
+    0% {
+
+        opacity: 1;
+
+        transform: translateX(0);
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform: translateX(60px);
+
+    }
+
+}
+
+
+/* ======================================
+   APPEAR
+====================================== */
+
+@keyframes appear {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(10px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+
+/* ======================================
+   EMPTY
+====================================== */
+
+.empty {
+
+    display: none;
+
+    margin-top: 15px;
+
+    padding: 55px 20px;
+
+    text-align: center;
+
+    border: 1px dashed
+        rgba(255,255,255,0.12);
+
+    border-radius: 14px;
+
+}
+
+
+.empty-circle {
+
+    width: 45px;
+
+    height: 45px;
+
+    margin: auto;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: rgba(99,102,241,0.15);
+
+    color: #818cf8;
+
+}
+
+
+.empty h3 {
+
+    margin-top: 15px;
+
+    font-size: 15px;
+
+}
+
+
+.empty p {
+
+    margin-top: 6px;
+
+    color: #70737e;
+
+    font-size: 12px;
+
+}
+
+
+/* ======================================
+   FOOTER
+====================================== */
+
+footer {
+
+    margin-top: 60px;
+
+    text-align: center;
+
+    color: #444752;
+
+    font-size: 11px;
+
+}
+
+
+/* ======================================
+   MOBILE
+====================================== */
+
+@media (max-width: 650px) {
+
+    body {
+
+        padding: 25px 15px;
+
+    }
+
+
+    header {
+
+        flex-direction: column;
+
+        gap: 15px;
+
+    }
+
+
+    header h1 {
+
+        font-size: 28px;
+
+    }
+
+
+    .add-task {
+
+        flex-wrap: wrap;
+
+    }
+
+
+    .add-task input {
+
+        flex-basis: 100%;
+
+    }
+
+
+    .add-task select,
+    .add-task button {
+
+        height: 42px;
+
+        flex: 1;
+
+    }
+
+
+    .task-card {
+
+        align-items: flex-start;
+
+    }
+
+
+    .actions {
+
+        flex-direction: column;
+
+    }
+
+}
+>>>>>>> UI-Updations
