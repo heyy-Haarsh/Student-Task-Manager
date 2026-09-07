@@ -1,0 +1,21 @@
+{
+  "name": "student-task-manager",
+  "version": "1.0.0",
+  "description": "A simple Student Task Manager web application",
+  "scripts": {
+    "build": "node build.js",
+    "validate:html": "html-validate index.html",
+    "validate:js": "node --check app.js && node --check task-priority.js",
+    "test": "npm run build"
+  },
+  "devDependencies": {
+    "html-validate": "^9.0.0"
+  },
+  "keywords": [
+    "student",
+    "task",
+    "manager"
+  ],
+  "author": "",
+  "license": "ISC"
+}
