@@ -2,10 +2,6 @@ pipeline {
 
     agent any
 
-    tools {
-        nodejs 'NodeJS'
-    }
-
     stages {
 
         stage('Checkout') {
@@ -16,6 +12,8 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
+                sh 'node --version'
+                sh 'npm --version'
                 sh 'npm install'
             }
         }
@@ -34,7 +32,6 @@ pipeline {
     }
 
     post {
-
         success {
             echo 'CI Pipeline SUCCESS: Build and tests passed.'
         }
