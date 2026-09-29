@@ -6,7 +6,7 @@
     "build": "node build.js",
     "validate:html": "html-validate index.html",
     "validate:js": "node --check app.js && node --check task-priority.js",
-    "test": "npm run build"
+    "test": "npm run build && node tests/test.js"
   },
   "devDependencies": {
     "html-validate": "^9.0.0"
