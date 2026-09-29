@@ -45,7 +45,7 @@ test("index.html contains task input", () => {
     const html = fs.readFileSync("index.html", "utf8");
 
     assert.ok(
-        html.includes('id="doesNotExist"'),
+        html.includes('id="taskInput"'),
         "Task input field not found"
     );
 });
