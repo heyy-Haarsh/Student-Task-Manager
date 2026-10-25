@@ -26,3 +26,6 @@ models, base template). Features are developed on:
 - `feature/notifications-reminders`
 
 See `BRANCHING_STRATEGY.md` for the full workflow.
+
+##Jenkins CI Demo
+This project is integraeted with jenkins CI
