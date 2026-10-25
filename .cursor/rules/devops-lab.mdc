@@ -1,0 +1,77 @@
+---
+description: DevOps lab rules for every Student Task Manager assignment
+alwaysApply: true
+---
+
+# DevOps lab assignments
+
+These rules apply to every task in this repo.
+
+## 1. Inspect real files first
+
+Read the real files before writing anything. Never assume ports, image names, file paths, or commands. Read these first:
+
+- `app.py`
+- `config.py`
+- `requirements.txt`
+- `Dockerfile`
+- `Jenkinsfile`
+- `deployment.yaml`
+- `service.yaml`
+- `tests/`
+- `BRANCHING_STRATEGY.md`
+
+## 2. Truthfulness
+
+Only document what exists or what you actually ran. Never fabricate command output, screenshots, build numbers, URLs, usernames, or dates.
+
+If you ran a command, paste its real (trimmed) output.
+
+If a step needs a GUI or an external service (Jenkins UI, GitHub PR page, Grafana UI), write the steps and add a placeholder in exactly this format:
+
+> 📸 **Screenshot to add:** `screenshots/NN-short-name.png`: what it should show
+
+## 3. Do not move root project files
+
+Do not move or rename these root-level files: `app.py`, `Dockerfile`, `Jenkinsfile`, `deployment.yaml`, `service.yaml`, `tests/`, `requirements.txt`.
+
+Link to them from assignment READMEs with relative paths, for example `../Dockerfile`.
+
+## 4. Do not change application code
+
+Do not change application code unless the task explicitly says so. If you spot a bug, report it instead of silently fixing it.
+
+## 5. Assignment README structure
+
+Every assignment README uses this structure:
+
+1. Title
+2. **CO Mapped**
+3. Aim
+4. Tools Used
+5. Prerequisites
+6. Related Files
+7. Steps / Commands (numbered, with real commands)
+8. Output (screenshot placeholders and real captured output)
+9. Observations
+10. Conclusion
+
+## 6. Writing style
+
+Use clear, simple, student-level English. Do not copy text from any other student's repository or README.
+
+## 7. Git
+
+- Stage only the files relevant to the current task.
+- Make one commit with the exact message given.
+- Do not push.
+- Never force-push.
+- Never delete files without asking.
+
+## 8. End of every task
+
+Reply with:
+
+- files created or changed
+- anything you could not do
+- a numbered list of the screenshots the student still needs to capture
