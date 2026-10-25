@@ -1,31 +1,49 @@
-# Student Task Manager
+# ⚙️ DevOps for Scalable Systems Lab
 
-A base Flask + SQLite skeleton demonstrating a full Git branching workflow
-(see `BRANCHING_STRATEGY.md`).
+Practical lab work record of 8 DevOps assignments, built around a
+**Student Task Manager** web application (Python / Flask).
 
-## Setup
+## 🧪 Assignments
 
+| No. | Assignment | CO | Folder |
+|-----|-----------|----|--------|
+| 1 | Git Basics | CO1 | [Open](./Assignment-1-Git-Basics) |
+| 2 | Git Branching & Collaboration | CO1 | [Open](./Assignment-2-Git-Branching-Collaboration) |
+| 3 | Jenkins Build | CO1 | [Open](./Assignment-3-Jenkins-Build) |
+| 4 | Dockerization | CO2 | [Open](./Assignment-4-Dockerization) |
+| 5 | Kubernetes Deployment | CO2 | [Open](./Assignment-5-Kubernetes-Deployment) |
+| 6 | Jenkins Pipeline with Automated Testing | CO3 | [Open](./Assignment-6-Jenkins-Pipeline-Automated-Testing) |
+| 7 | Monitoring with Prometheus | CO4 | [Open](./Assignment-7-Monitoring-Prometheus) |
+| 8 | Visualization with Grafana | CO4 | [Open](./Assignment-8-Visualization-Grafana) |
+
+## 🔄 Workflow
+
+```mermaid
+flowchart TD
+    A[Source Code] --> B[Git & GitHub]
+    B --> C[Jenkins Pipeline]
+    C --> D[Docker Image]
+    D --> E[Kubernetes / Minikube]
+    E --> F[Prometheus]
+    F --> G[Grafana]
+```
+
+## 🛠️ Tech Stack
+Python, Flask, Git, GitHub, Jenkins, Docker, Kubernetes (Minikube), Prometheus, Grafana
+
+## ▶️ Run Locally
 ```bash
-python -m venv venv
-source venv/bin/activate   # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 python app.py
 ```
 
-Visit http://127.0.0.1:5000
+## 📁 Key Files
+| File | Used in |
+|------|---------|
+| `BRANCHING_STRATEGY.md` | Assignment 2 |
+| `Jenkinsfile`, `tests/` | Assignments 3 and 6 |
+| `Dockerfile` | Assignment 4 |
+| `deployment.yaml`, `service.yaml` | Assignment 5 |
 
-## Branches
-
-This `main` branch holds only the base skeleton (app factory, config, base
-models, base template). Features are developed on:
-
-- `feature/database-setup`
-- `feature/user-authentication`
-- `feature/task-crud`
-- `feature/task-dashboard-ui`
-- `feature/notifications-reminders`
-
-See `BRANCHING_STRATEGY.md` for the full workflow.
-
-##Jenkins CI Demo
-This project is integraeted with jenkins CI
+## 🎯 Objective
+<write 1–2 sentences in your own words>
