@@ -1,0 +1,10 @@
+.git
+node_modules
+__pycache__
+*.pyc
+*.db
+.env
+venv
+.venv
+Assignment-*
+tests
