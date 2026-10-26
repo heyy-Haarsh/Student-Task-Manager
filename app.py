@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, Response
-from prometheus_client import Counter, Gauge, generate_latest, CONTENT_TYPE_LATEST
-import psutil
-import os
+from prometheus_client import Counter, Histogram, generate_latest, CONTENT_TYPE_LATEST
+from time import time
 
 app = Flask(__name__)
 
@@ -11,44 +10,52 @@ tasks = ["Complete OS Assignment", "Submit IT Lab Manual"]
 # Prometheus Metrics
 # -------------------------------------------------
 
-# Application availability
-APP_UP = Gauge(
-    "student_task_manager_up",
-    "Indicates whether the Student Task Manager application is running"
-)
-
-# Total HTTP requests
 HTTP_REQUESTS = Counter(
     "http_requests_total",
     "Total number of HTTP requests",
-    ["method", "endpoint"]
+    ["method", "endpoint", "status"],
 )
 
-# Process memory usage
-MEMORY_USAGE = Gauge(
-    "student_task_manager_memory_bytes",
-    "Memory usage of the Student Task Manager process in bytes"
+HTTP_REQUEST_DURATION = Histogram(
+    "http_request_duration_seconds",
+    "HTTP request latency in seconds",
+    ["method", "endpoint"],
 )
-
-APP_UP.set(1)
 
 
 # -------------------------------------------------
-# Track HTTP Requests
+# Track HTTP Requests (skip /metrics itself)
 # -------------------------------------------------
 
 @app.before_request
 def before_request():
-    HTTP_REQUESTS.labels(
-        method=request.method,
-        endpoint=request.path
-    ).inc()
+    if request.path == "/metrics":
+        return
+    request._prom_start_time = time()
 
 
 @app.after_request
 def after_request(response):
-    process = psutil.Process(os.getpid())
-    MEMORY_USAGE.set(process.memory_info().rss)
+    if request.path == "/metrics":
+        return response
+
+    method = request.method
+    endpoint = request.path
+    status = str(response.status_code)
+
+    HTTP_REQUESTS.labels(
+        method=method,
+        endpoint=endpoint,
+        status=status,
+    ).inc()
+
+    start = getattr(request, "_prom_start_time", None)
+    if start is not None:
+        HTTP_REQUEST_DURATION.labels(
+            method=method,
+            endpoint=endpoint,
+        ).observe(time() - start)
+
     return response
 
 
